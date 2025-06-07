@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionZ - Women's Western Wear</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #8B2F97, #E91E63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 600px;
+            margin: 0 40px;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: #8B2F97;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-btn {
+            padding: 8px 16px;
+            border: 1px solid #8B2F97;
+            background: white;
+            color: #8B2F97;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .header-btn:hover {
+            background: #8B2F97;
+            color: white;
+        }
+
+        .header-icon {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: white;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            overflow-x: auto;
+        }
+
+        .nav-menu li {
+            cursor: pointer;
+            font-weight: 500;
+            color: #555;
+            white-space: nowrap;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu li:hover {
+            color: #8B2F97;
+        }
+
+        .nav-menu li.active {
+            color: #8B2F97;
+            border-bottom: 2px solid #8B2F97;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 10px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .breadcrumb-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb a {
+            color: #8B2F97;
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            gap: 30px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            height: fit-content;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .sort-section {
+            margin-bottom: 30px;
+        }
+
+        .sort-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .sort-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .filters-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .product-count {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            margin-bottom: 25px;
+        }
+
+        .filter-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+
+        .filter-option input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #8B2F97;
+        }
+
+        .filter-option label {
+            font-size: 14px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        /* Products Grid */
+        .products-section {
+            flex: 1;
+        }
+
+        .section-header {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .sale-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ff4444;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .original-price {
+            font-size: 16px;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+
+        .product-delivery {
+            font-size: 12px;
+            color: #00b853;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rating-badge {
+            background: #00b853;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .rating-count {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .trusted-badge {
+            background: #8B2F97;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-container {
+                margin: 0;
+                max-width: 100%;
+            }
+            
+            .nav-menu {
+                gap: 20px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">FashionZ</div>
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Try Dress, Tops, Jeans or Search by Product Code">
+                <div class="search-icon">🔍</div>
+            </div>
+            <div class="header-actions">
+                <a href="#" class="header-btn">Become a Supplier</a>
+                <a href="#" class="header-btn">Investor Relations</a>
+                <a href="#" class="header-icon">
+                    <span>👤</span>
+                    <span>Profile</span>
+                </a>
+                <a href="#" class="header-icon">
+                    <span>🛒</span>
+                    <span>Cart</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="active">Women Western</li>
+                <li>Women Ethnic</li>
+                <li>Men</li>
+                <li>Kids</li>
+                <li>Home & Kitchen</li>
+                <li>Beauty & Health</li>
+                <li>Jewellery & Accessories</li>
+                <li>Bags & Footwear</li>
+                <li>Electronics</li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="#">Home</a> / <a href="#">Women</a> / <strong>Western Wear</strong>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sort-section">
+                <div class="sort-label">Sort by:</div>
+                <select class="sort-select">
+                    <option>Relevance</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Customer Rating</option>
+                    <option>Newest First</option>
+                    <option>Popularity</option>
+                    <option>Discount</option>
+                </select>
+            </div>
+
+            <div class="filters-section">
+                <h3>FILTERS</h3>
+                <div class="product-count">850+ Products</div>
+
+                <div class="filter-group">
+                    <div class="filter-title">
+                        Category
+                        <span>▼</span>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="dresses">
+                            <label for="dresses">Dresses</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="tops">
+                            <label for="tops">Tops & Tunics</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="jeans">
+                            <label for="jeans">Jeans</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="skirts">
+                            <label for="skirts">Skirts</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="blazers">
+                            <label for="blazers">Blazers & Coats</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="jumpsuits">
+                            <label for="jumpsuits">Jumpsuits</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-title">
+                        Size
+                        <span>▼</span>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="xs">
+                            <label for="xs">XS</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="s">
+                            <label for="s">S</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="m">
+                            <label for="m">M</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="l">
+                            <label for="l">L</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="xl">
+                            <label for="xl">XL</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="xxl">
+                            <label for="xxl">XXL</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-title">
+                        Color
+                        <span>▼</span>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="black">
+                            <label for="black">Black</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="white">
+                            <label for="white">White</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="blue">
+                            <label for="blue">Blue</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="red">
+                            <label for="red">Red</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="pink">
+                            <label for="pink">Pink</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Products Section -->
+        <main class="products-section">
+            <div class="section-header">
+                <h1 class="section-title">Women's Western Wear</h1>
+                <p class="section-subtitle">Discover trendy and comfortable western outfits for every occasion</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                        <img src="assets\elegentfloralmaxidress.jpg" alt="Elegant Floral Maxi Dress" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        <div class="sale-badge">30% OFF</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Elegant Floral Maxi Dress</h3>
+                        <div class="product-price">₹899 <span class="original-price">₹1,299</span></div>
+                        <div class="product-delivery">Free Delivery</div>
+                        <div class="product-rating">
+                            <div class="rating-badge">
+                                4.2 ⭐
+                            </div>
+                            <span class="rating-count">2,341 Reviews</span>
+                            <div class="trusted-badge">🛡️ Trusted</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                        <img src="assets\Trendy Crop Top Collection.jpg" alt="Trendy Crop Top Collection" style="max-width:100%; max-height:100%; object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Trendy Crop Top Collection</h3>
+                        <div class="product-price">₹399</div>
+                        <div class="product-delivery">Free Delivery</div>
+                        <div class="product-rating">
+                            <div class="rating-badge">
+                                4.0 ⭐
+                            </div>
+                            <span class="rating-count">1,827 Reviews</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                        <img src="assets\Premium High-Waist Jeans.jpg" alt="Premium High Waist Jeans" style="max-width:100%; max-height:100%; object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Premium High Waist Jeans</h3>
+                        <div class="product-price">₹1,099</div>
+                        <div class="product-delivery">Free Delivery</div>
+                        <div class="product-rating">
+                            <div class="rating-badge">
+                                4.4 ⭐
+                            </div>
+                            <span class="rating-count">1,120 Reviews</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                        <img src="assets\Professional Blazer Set.jpg" alt="Professional Blazer Set" style="max-width:100%; max-height:100%; object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Professional Blazer Set</h3>
+                        <div class="product-price">₹1,599</div>
+                        <div class="product-delivery">Free Delivery</div>
+                        <div class="product-rating">
+                            <div class="rating-badge">
+                                4.3 ⭐
+                            </div>
+                            <span class="rating-count">987 Reviews</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                        <img src="assets\Chic Summer Jumpsuit.jpg" alt="Chic Summer Jumpsuit" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        <div class="sale-badge">HOT</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Chic Summer Jumpsuit</h3>
+                        <div class="product-price">₹799</div>
+                        <div class="product-delivery">Free Delivery</div>
+                        <div class="product-rating">
+                            <div class="rating-badge">
+                                4.1 ⭐
+                            </div>
+                            <span class="rating-count">1,456 Reviews</span>
+                            <div class="trusted-badge">🛡️ Trusted</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                        <img src="assets\Elegant Party Skirt.jpg" alt="Elegant Party Skirt" style="max-width:100%; max-height:100%; object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Elegant Party Skirt</h3>
+                        <div class="product-price">₹1,249</div>
+                        <div class="product-delivery">Free Delivery</div>
+                        <div class="product-rating">
+                            <div class="rating-badge">
+                                4.5 ⭐
+                            </div>
+                            <span class="rating-count">1,032 Reviews</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 500;">
+                        <div class="sale-badge">NEW</div>
+                        <img src="assets\Trendy Designer Top.jpg" alt="Trendy Designer Top" style="max-width:100%; max-height:100%; object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Trendy Designer Top</h3>
+                        <div class="product-price">₹549</div>
+                        <div class="product-delivery">Free Delivery</div>
+                        <div class="product-rating">
+                            <div class="rating-badge">
+                                4.2 ⭐
+                            </div>
+                            <span class="rating-count">1,234 Reviews</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="product-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 500;">
+                        <div class="sale-badge">NEW</div>
+                        <img src="assets\comfortable casual dres.jpg" alt="comfortable dress" style="max-width:100%; max-height:100%; object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Comfortable Casual Dress</h3>
+                        <div class="product-price">₹699</div>
+                        <div class="product-delivery">Free Delivery</div>
+                        <div class="product-rating">
+                            <div class="rating-badge">
+                                4.3 ⭐
+                            </div>
+                            <span class="rating-count">2,156 Reviews</span>
+                            <div class="trusted-badge">🛡️ Trusted</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Add interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter toggle functionality
+            const filterTitles = document.querySelectorAll('.filter-title');
+            filterTitles.forEach(title => {
+                title.addEventListener('click', function() {
+                    const options = this.nextElementSibling;
+                    const arrow = this.querySelector('span');
+                    
+                    if (options.style.display === 'none') {
+                        options.style.display = 'flex';
+                        arrow.textContent = '▼';
+                    } else {
+                        options.style.display = 'none';
+                        arrow.textContent = '▶';
+                    }
+                });
+            });
+
+            // Product card click effects
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Add a subtle click animation
+                    this.style.transform = 'translateY(-5px) scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-5px)';
+                    }, 150);
+                });
+            });
+
+            // Sort functionality
+            const sortSelect = document.querySelector('.sort-select');
+            sortSelect.addEventListener('change', function() {
+                // Add sorting logic here
+                console.log('Sorting by:', this.value);
+            });
+
+            // Filter checkbox functionality
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    // Add filter logic here
+                    console.log('Filter changed:', this.id, this.checked);
+                    updateProductCount();
+                });
+            });
+
+            // Update product count based on filters
+            function updateProductCount() {
+                const checkedFilters = document.querySelectorAll('input[type="checkbox"]:checked');
+                const productCount = document.querySelector('.product-count');
+                
+                if (checkedFilters.length > 0) {
+                    // Simulate filtered count
+                    const filteredCount = Math.max(50, 850 - (checkedFilters.length * 100));
+                    productCount.textContent = `${filteredCount}+ Products`;
+                } else {
+                    productCount.textContent = '850+ Products';
+                }
+            }
+
+            // Search functionality
+            const searchBar = document.querySelector('.search-bar');
+            searchBar.addEventListener('input', function() {
+                // Add search logic here
+                console.log('Searching for:', this.value);
+            });
+        });
+    </script>
+</body>
+</html>

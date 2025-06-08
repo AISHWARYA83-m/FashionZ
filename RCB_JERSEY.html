@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RCB Official Jersey - Virat 18</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #8B2F97, #E91E63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 50px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: 1px solid #d0d0d0;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            background: #fafafa;
+        }
+
+        .search-input:focus {
+            border-color: #8b5a9f;
+            background: white;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8b5a9f;
+            font-size: 18px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header-btn {
+            padding: 8px 20px;
+            border: 1px solid #8b5a9f;
+            border-radius: 6px;
+            background: white;
+            color: #8b5a9f;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .header-btn:hover {
+            background: #8b5a9f;
+            color: white;
+        }
+
+        .profile-cart {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .profile-cart a {
+            color: #666;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 0;
+        }
+
+        .nav-menu {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+            padding: 0 30px;
+            overflow-x: auto;
+        }
+
+        .nav-item {
+            padding: 18px 25px;
+            color: #666;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            color: #8b5a9f;
+        }
+
+        .nav-item.active {
+            color: #8b5a9f;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #8b5a9f;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .breadcrumb a {
+            color: #8b5a9f;
+            text-decoration: none;
+        }
+
+        /* Product Section */
+        .product-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        /* Product Images */
+        .product-images {
+            display: flex;
+            gap: 20px;
+        }
+
+        .thumbnail-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .thumbnail {
+            width: 70px;
+            height: 70px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: #8b5a9f;
+            box-shadow: 0 2px 8px rgba(139, 90, 159, 0.2);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .main-image {
+            flex: 1;
+            max-width: 550px;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        }
+
+        /* Product Info */
+        .product-info h1 {
+            font-size: 26px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .price-section {
+            margin-bottom: 25px;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .rating-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .rating-text {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .trusted-badge {
+            background: #FF5722;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .free-delivery {
+            color: #4CAF50;
+            font-weight: 600;
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        /* Size Selection */
+        .size-section {
+            margin-bottom: 35px;
+        }
+
+        .size-section h3 {
+            font-size: 18px;
+            margin-bottom: 18px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .size-option {
+            padding: 12px 18px;
+            border: 1px solid #d0d0d0;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .size-option:hover {
+            border-color: #8b5a9f;
+            background: #f8f5fa;
+        }
+
+        .size-option.selected {
+            border-color: #8b5a9f;
+            background: #8b5a9f;
+            color: white;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 2px solid #8b5a9f;
+            color: #8b5a9f;
+        }
+
+        .btn-outline:hover {
+            background: #f8f5fa;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139, 90, 159, 0.2);
+        }
+
+        .btn-primary {
+            background: #8b5a9f;
+            color: white;
+            border: 2px solid #8b5a9f;
+        }
+
+        .btn-primary:hover {
+            background: #7a4d8c;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139, 90, 159, 0.3);
+        }
+
+        /* Product Details */
+        .product-details {
+            background: #fafafa;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .product-details h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .detail-item {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 15px;
+            align-items: flex-start;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #555;
+            min-width: 140px;
+            flex-shrink: 0;
+        }
+
+        .detail-value {
+            color: #333;
+            flex: 1;
+        }
+
+        /* Similar Products */
+        .similar-products {
+            max-width: 1400px;
+            margin: 50px auto;
+            padding: 0 30px;
+        }
+
+        .similar-products h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-container {
+                margin: 0;
+                max-width: 100%;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .product-images {
+                flex-direction: column-reverse;
+            }
+            
+            .thumbnail-list {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo" style="font-size: 32px; font-weight: bold; background: linear-gradient(45deg, #8B2F97, #E91E63); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                FashionZ
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Try Shirt, Jeans or Search by Product Code">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="header-actions">
+                <a href="#" class="header-btn">Become a Supplier</a>
+                <a href="#" class="header-btn">Investor Relations</a>
+            </div>
+            <div class="profile-cart">
+                <a href="#">👤 Profile</a>
+                <a href="#">🛒 Cart</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-menu">
+            <a href="Ethnicsarees.html" class="nav-item">Women Ethnic</a>
+            <a href="womenwestern.html" class="nav-item">Women Western</a>
+            <a href="menwear.html" class="nav-item active">Men</a>
+            <a href="#" class="nav-item">Kids</a>
+            <a href="#" class="nav-item">Home & Kitchen</a>
+            <a href="#" class="nav-item">Beauty & Health</a>
+            <a href="#" class="nav-item">Jewellery & Accessories</a>
+            <a href="#" class="nav-item">Bags & Footwear</a>
+            <a href="#" class="nav-item">Electronics</a>
+            <a href="#" class="nav-item">Sports & Fitness</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="#">Home</a> / <a href="#">Men</a> / <a href="#">Men Western Top Wear</a> / <a href="#">Tshirts</a> / RCB Official Jersey - Virat 18
+    </div>
+
+    <!-- Product Section -->
+    <div class="product-container">
+        <!-- Product Images -->
+        <div class="product-images">
+            <div class="main-image">
+                <img src="assets/RCB JERSEY.jpg" alt="RCB Jersey Virat 18" style="width:100%;height:auto;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.12);">
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <h1>RCB Official Jersey - Virat 18</h1>
+            
+            <div class="price-section">
+                <span class="price">₹799</span>
+            </div>
+
+            <div class="rating-section">
+                <span class="rating-badge">4.7★</span>
+                <span class="rating-text">12,340 Ratings, 3,210 Reviews</span>
+                <span class="trusted-badge">Trusted</span>
+            </div>
+
+            <div class="free-delivery">Free Delivery</div>
+
+            <div class="size-section">
+                <h3>Select Size</h3>
+                <div class="size-options">
+                    <div class="size-option">S</div>
+                    <div class="size-option selected">M</div>
+                    <div class="size-option">L</div>
+                    <div class="size-option">XL</div>
+                    <div class="size-option">XXL</div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-outline">🛒 Add to Cart</button>
+                <button class="btn btn-primary">⚡ Buy Now</button>
+            </div>
+
+            <div class="product-details">
+                <h3>Product Details</h3>
+                <div class="detail-item">
+                    <span class="detail-label">Name :</span>
+                    <span class="detail-value">RCB Official Jersey - Virat 18</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Fabric :</span>
+                    <span class="detail-value">Polyester</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Sleeve Length :</span>
+                    <span class="detail-value">Short Sleeves</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Pattern :</span>
+                    <span class="detail-value">Printed (Official RCB, Virat 18)</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Net Quantity (N) :</span>
+                    <span class="detail-value">1</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Sizes :</span>
+                    <span class="detail-value">S, M, L, XL, XXL</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Similar Products -->
+    <div class="similar-products">
+        <h3>7 Similar Products</h3>
+    </div>
+
+    <script>
+        // Size selection functionality
+        document.querySelectorAll('.size-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Thumbnail image switching
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Add to cart button
+        document.querySelector('.btn-outline').addEventListener('click', function() {
+            alert('Added to cart!');
+        });
+
+        // Buy now button
+        document.querySelector('.btn-primary').addEventListener('click', function() {
+            alert('Proceeding to checkout...');
+        });
+    </script>
+</body>
+</html>

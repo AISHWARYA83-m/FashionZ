@@ -106,40 +106,50 @@
 
         /* Navigation */
         .nav-bar {
-            background: white;
-            padding: 12px 0;
-            border-bottom: 1px solid #e0e0e0;
+            background: #8B2F97 !important;
+            padding: 4px 0 !important;
+            border-bottom: none !important;
+            min-height: 36px;
+            box-shadow: none !important;
         }
 
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 10px;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 14px;
             overflow-x: auto;
+            font-size: 13px;
+            min-height: 28px;
+            background: transparent;
         }
 
-        .nav-menu li {
-            cursor: pointer;
+        .nav-menu li,
+        .nav-menu li a {
+            color: #fff !important;
             font-weight: 500;
-            color: #555;
-            white-space: nowrap;
-            padding: 8px 0;
-            transition: color 0.3s ease;
+            text-decoration: none;
+            padding: 0 2px;
+            font-size: 13px !important;
+            background: none;
+            transition: none;
         }
 
-        .nav-menu li:hover {
-            color: #8B2F97;
+        .nav-menu li.active,
+        .nav-menu li.active a {
+            border-bottom: 2px solid #fff;
+            color: #fff !important;
         }
 
-        .nav-menu li.active {
-            color: #8B2F97;
-            border-bottom: 2px solid #8B2F97;
+        .nav-menu li:hover,
+        .nav-menu li a:hover {
+            color: #fff !important;
+            background: none;
         }
 
         /* Breadcrumb */
@@ -215,13 +225,15 @@
         }
 
         .filter-title {
-            font-weight: 600;
-            margin-bottom: 12px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 15px;
             color: #333;
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
+            padding: 2px 0;
         }
 
         .filter-options {
@@ -230,17 +242,19 @@
             gap: 8px;
         }
 
+        .filter-options label {
+            font-size: 12px;
+        }
+
         .filter-option {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            padding: 5px 0;
+            font-size: 12px;
+            gap: 6px;
+            padding: 2px 0;
         }
 
         .filter-option input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             accent-color: #8B2F97;
         }
 
@@ -454,15 +468,17 @@
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
-                <li class="active">Women Western</li>
-                <li>Women Ethnic</li>
-                <li>Men</li>
-                <li>Kids</li>
-                <li>Home & Kitchen</li>
-                <li>Beauty & Health</li>
-                <li>Jewellery & Accessories</li>
-                <li>Bags & Footwear</li>
-                <li>Electronics</li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="WomenEthnic.html">Women Ethnic</a></li>
+                <li class="active"><a href="womenwestern.html">Women Western</a></li>
+                <li><a href="menwear.html">Men's Wear</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Home & Kitchen</a></li>
+                <li><a href="#">Beauty & Health</a></li>
+                <li><a href="#">Jewellery & Accessories</a></li>
+                <li><a href="#">Bags & Footwear</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Sports & Fitness</a></li>
             </ul>
         </div>
     </nav>

@@ -106,49 +106,51 @@
 
         /* Navigation */
         .nav-bar {
-            background: white;
-            padding: 8px 0 5px 0; /* Reduced vertical padding */
-            border-bottom: 1px solid #e0e0e0;
-            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+            background: #8B2F97 !important;
+            padding: 4px 0 !important;
+            border-bottom: none !important;
+            min-height: 36px;
+            box-shadow: none !important;
         }
 
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 10px;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 14px; /* Reduced gap between menu items */
+            gap: 14px;
             overflow-x: auto;
-            justify-content: flex-start;
-            align-items: center;
+            font-size: 13px;
+            min-height: 28px;
             background: transparent;
         }
 
         .nav-menu li,
         .nav-menu li a {
-            font-size: 13px; /* Reduced font size */
-            padding-bottom: 2px; /* Reduced padding */
-            color: #8B2F97 !important;
+            color: #fff !important;
             font-weight: 500;
             text-decoration: none;
-            transition: color 0.3s ease;
-            position: relative;
-            background: transparent;
+            padding: 0 2px;
+            font-size: 13px !important;
+            background: none;
+            transition: none;
         }
 
+        /* Remove underline (border-bottom) from navigation bar active items */
         .nav-menu li.active,
         .nav-menu li.active a {
-            color: #8B2F97 !important;
+            border-bottom: none !important;
+            color: #fff !important;
         }
 
-
         .nav-menu li:hover,
-        .nav-menu li:hover a {
-            color: #8B2F97 !important;
+        .nav-menu li a:hover {
+            color: #fff !important;
+            background: none;
         }
 
         /* Main Content */
@@ -410,7 +412,7 @@
         <div class="nav-container">
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="Ethnicsarees.html">Women Ethnic</a></li>
+                <li><a href="WomenEthnic.html">Women Ethnic</a></li>
                 <li><a href="womenwestern.html">Women Western</a></li>
                 <li class="active"><a href="menwear.html">Men's Wear</a></li>
                 <li class="active"><a href="#">Kids</a></li>

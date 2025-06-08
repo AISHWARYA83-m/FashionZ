@@ -106,35 +106,47 @@
 
         /* Navigation */
         .nav-bar {
-            background: white;
-            padding: 12px 0;
-            border-bottom: 1px solid #e0e0e0;
+            background: #8B2F97 !important;
+            padding: 4px 0 !important;
+            border-bottom: none !important;
+            min-height: 36px;
         }
 
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 10px;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 18px;
             overflow-x: auto;
+            font-size: 13px;
+            min-height: 28px;
         }
 
-        .nav-menu li {
-            cursor: pointer;
+        .nav-menu li,
+        .nav-menu li a {
+            color: #fff !important;
             font-weight: 500;
-            color: #555;
-            white-space: nowrap;
-            padding: 8px 0;
-            transition: color 0.3s ease;
+            text-decoration: none;
+            padding: 0 2px;
+            transition: none;
+            background: none;
         }
 
-        .nav-menu li:hover {
-            color: #8B2F97;
+        .nav-menu li.active,
+        .nav-menu li.active a {
+            border-bottom: 2px solid #fff;
+            color: #fff !important;
+        }
+
+        .nav-menu li:hover,
+        .nav-menu li a:hover {
+            color: #fff !important;
+            background: none;
         }
 
         /* Main Content */
@@ -397,7 +409,7 @@
             <ul class="nav-menu">
                 <li><a href="womenethnic.html" style="text-decoration:none; color:inherit;">Women Ethnic</a></li>
                 <li><a href="womenwestern.html" style="text-decoration:none; color:inherit;">Women Western</a></li>
-                <li><a href="men.html" style="text-decoration:none; color:inherit;">Men</a></li>
+                <li><a href="menwear.html" style="text-decoration:none; color:inherit;">Men</a></li>
                 <li>Kids</li>
                 <li>Home & Kitchen</li>
                 <li>Beauty & Health</li>

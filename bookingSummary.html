@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary - FashionZ</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafbfc;
+            color: #333;
+        }
+        .header {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 28px 0 12px 0;
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #a12ca4 0%, #f43b7e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        .progress-bar {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 24px 0 16px 0;
+        }
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #bdbdbd;
+            font-size: 14px;
+            font-weight: 500;
+            width: 120px;
+        }
+        .progress-step.active {
+            color: #9c27b0;
+        }
+        .progress-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid #bdbdbd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+            background: #fff;
+        }
+        .progress-step.active .progress-circle {
+            border-color: #9c27b0;
+            background: #f3e5f5;
+        }
+        .progress-bar-line {
+            width: 80px;
+            height: 2px;
+            background: #bdbdbd;
+            margin: 0 8px;
+        }
+        .progress-step.active ~ .progress-bar-line {
+            background: #9c27b0;
+        }
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 36px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px 40px 16px;
+        }
+        .left-section {
+            flex: 2;
+            margin-top: 16px;
+        }
+        .right-section {
+            flex: 1;
+            margin-top: 16px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .product-details, .address-details {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .delivery-estimate {
+            font-size: 15px;
+            color: #333;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .delivery-estimate svg {
+            color: #9c27b0;
+        }
+        .product-info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .product-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid #eee;
+        }
+        .product-info {
+            flex: 1;
+        }
+        .product-title {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #222;
+        }
+        .product-meta {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+        .product-edit {
+            color: #9c27b0;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        .product-seller {
+            font-size: 13px;
+            color: #888;
+            margin-top: 6px;
+        }
+        .free-delivery {
+            color: #00b853;
+            font-size: 13px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+        .address-details {
+            margin-bottom: 0;
+        }
+        .address-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .address-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .address-change {
+            color: #9c27b0;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .address-box {
+            background: #f3e5f5;
+            border: 1px solid #ce93d8;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-top: 12px;
+            font-size: 15px;
+            color: #333;
+        }
+        .address-name {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .address-input {
+            width: 100%;
+            min-height: 60px;
+            border: 1px solid #ce93d8;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 15px;
+            margin-top: 12px;
+            margin-bottom: 8px;
+            resize: vertical;
+        }
+        .address-btns {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .address-btn {
+            background: #9c27b0;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 7px 14px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .address-btn:hover {
+            background: #7b1fa2;
+        }
+        .right-section {
+            min-width: 320px;
+        }
+        .price-details {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            padding: 24px;
+            margin-bottom: 18px;
+        }
+        .price-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .order-total {
+            font-size: 18px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .continue-btn {
+            background: #9c27b0;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            width: 100%;
+            padding: 15px 0;
+            margin-bottom: 18px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .continue-btn:hover {
+            background: #7b1fa2;
+        }
+        .safe-box {
+            background: #f3e5f5;
+            border-radius: 8px;
+            padding: 14px 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: #7b1fa2;
+        }
+        .safe-box img {
+            width: 48px;
+            height: 48px;
+        }
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+                gap: 0;
+            }
+            .right-section {
+                min-width: 0;
+                margin-top: 0;
+            }
+        }
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 0 2px 32px 2px;
+            }
+            .product-details, .address-details, .price-details {
+                padding: 14px;
+            }
+            .logo {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">FashionZ</div>
+        <div class="progress-bar">
+            <div class="progress-step active">
+                <div class="progress-circle">1</div>
+                Review
+            </div>
+            <div class="progress-bar-line"></div>
+            <div class="progress-step">
+                <div class="progress-circle">2</div>
+                Payment
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <!-- Left Section -->
+        <div class="left-section">
+            <!-- Product Details -->
+            <div class="product-details" id="product-details">
+                <div class="delivery-estimate" id="delivery-estimate" style="display:none;">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M3 3h13v13H3z"></path>
+                        <path d="M16 8h5v8a2 2 0 0 1-2 2h-3"></path>
+                        <circle cx="7.5" cy="18.5" r="1.5"></circle>
+                        <circle cx="17.5" cy="18.5" r="1.5"></circle>
+                    </svg>
+                    Estimated Delivery by <span id="delivery-date">Tuesday, 17th Jun</span>
+                </div>
+                <div class="product-info-row" id="product-info-row" style="display:none;">
+                    <img class="product-img" id="product-img" src="" alt="Product Image">
+                    <div class="product-info">
+                        <div class="product-title" id="product-title">
+                            <!-- Product Name -->
+                            <a class="product-edit" href="#" onclick="editProduct()">EDIT</a>
+                        </div>
+                        <div class="product-meta" id="product-price"></div>
+                        <div class="product-meta" id="product-sizeqty"></div>
+                        <div class="product-seller" id="product-seller">
+                            <span class="free-delivery" id="free-delivery">Free Delivery</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="no-product" style="color:#bdbdbd; text-align:center; padding:30px 0;">
+                    No product selected.
+                </div>
+            </div>
+            <!-- Address Details -->
+            <div class="address-details">
+                <div class="address-header">
+                    <div class="address-title">
+                        <svg width="18" height="18" fill="#9c27b0" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        Delivery Address
+                    </div>
+                </div>
+                <div class="address-btns">
+                    <button class="address-btn" onclick="getLocation()">Use Current Location</button>
+                </div>
+                <textarea class="address-input" id="address-input" placeholder="Type your delivery address here..."></textarea>
+                <div class="address-box" id="address-box" style="display:none;">
+                    <div class="address-name" id="address-name"></div>
+                    <span id="address-content"></span>
+                </div>
+                <button class="address-btn" onclick="saveAddress()">Save Address</button>
+            </div>
+        </div>
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="price-details">
+                <div class="price-title">Price Details (<span id="item-count">0</span> Item)</div>
+                <div class="price-row">
+                    <span>Total Product Price</span>
+                    <span id="total-product-price">-</span>
+                </div>
+                <div class="order-total">
+                    <span>Order Total</span>
+                    <span id="order-total">-</span>
+                </div>
+                <div style="font-size:13px;color:#888;margin-bottom:12px;">
+                    Clicking on 'Continue' will not deduct any money
+                </div>
+                <button class="continue-btn">Continue</button>
+                <div class="safe-box">
+                    <img src="assets/safe_delivery.png" alt="Safe Delivery">
+                    <div>
+                        <b>Your Safety, Our Priority</b><br>
+                        We make sure that your package is safe at every point of contact.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Simulate product selection (null means no product selected)
+        // Set to null for no product, or to a product object for selected
+        let selectedProduct = null;
+        try {
+            const stored = localStorage.getItem('selectedProduct');
+            if (stored) selectedProduct = JSON.parse(stored);
+        } catch (e) {
+            selectedProduct = null;
+        }
+        updateProductSummary();
+
+        function updateProductSummary() {
+            if (!selectedProduct) {
+                document.getElementById('product-info-row').style.display = "none";
+                document.getElementById('delivery-estimate').style.display = "none";
+                document.getElementById('no-product').style.display = "block";
+                document.getElementById('item-count').textContent = "0";
+                document.getElementById('total-product-price').textContent = "-";
+                document.getElementById('order-total').textContent = "-";
+                return;
+            }
+            document.getElementById('product-info-row').style.display = "flex";
+            document.getElementById('delivery-estimate').style.display = "flex";
+            document.getElementById('no-product').style.display = "none";
+            document.getElementById('product-img').src = selectedProduct.img;
+            document.getElementById('product-title').childNodes[0].nodeValue = selectedProduct.name + " ";
+            document.getElementById('product-price').textContent = "₹" + selectedProduct.price;
+            document.getElementById('product-sizeqty').textContent = `Size: ${selectedProduct.size} \u00A0•\u00A0 Qty: ${selectedProduct.qty}`;
+            document.getElementById('product-seller').childNodes[0].nodeValue = "Sold by: " + selectedProduct.seller + " ";
+            document.getElementById('free-delivery').style.display = selectedProduct.freeDelivery ? "inline" : "none";
+            document.getElementById('item-count').textContent = selectedProduct.qty;
+            document.getElementById('total-product-price').textContent = "+ ₹" + (selectedProduct.price * selectedProduct.qty);
+            document.getElementById('order-total').textContent = "₹" + (selectedProduct.price * selectedProduct.qty);
+            document.getElementById('delivery-date').textContent = selectedProduct.deliveryDate || "Tuesday, 17th Jun";
+        }
+
+        // Address logic
+        function saveAddress() {
+            const address = document.getElementById('address-input').value.trim();
+            if (address.length === 0) {
+                alert("Please enter your delivery address.");
+                return;
+            }
+            document.getElementById('address-box').style.display = "block";
+            document.getElementById('address-content').textContent = address;
+            document.getElementById('address-name').textContent = ""; // Optionally set name
+        }
+
+        // Use Geolocation API for current location and reverse geocode to address
+        function getLocation() {
+            if (!navigator.geolocation) {
+                alert("Geolocation is not supported by your browser.");
+                return;
+            }
+            navigator.geolocation.getCurrentPosition(success, error);
+            function success(position) {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                // Use Nominatim OpenStreetMap API for reverse geocoding
+                fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.display_name) {
+                            document.getElementById('address-input').value = data.display_name;
+                        } else {
+                            document.getElementById('address-input').value = "Address not found for your location.";
+                        }
+                    })
+                    .catch(() => {
+                        document.getElementById('address-input').value = "Unable to fetch address.";
+                    });
+            }
+            function error() {
+                alert("Unable to retrieve your location.");
+            }
+        }
+
+        // Placeholder for edit product
+        function editProduct() {
+            alert("Edit product functionality goes here.");
+        }
+
+        // On page load, update summary
+        updateProductSummary();
+    </script>
+</body>
+</html>

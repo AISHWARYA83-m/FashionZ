@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - FashionZ</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafbfc;
+            color: #333;
+        }
+        .header {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 28px 0 12px 0;
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #a12ca4 0%, #f43b7e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        .progress-bar {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 24px 0 16px 0;
+        }
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #bdbdbd;
+            font-size: 14px;
+            font-weight: 500;
+            width: 120px;
+        }
+        .progress-step.active {
+            color: #9c27b0;
+        }
+        .progress-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid #bdbdbd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+            background: #fff;
+        }
+        .progress-step.active .progress-circle {
+            border-color: #9c27b0;
+            background: #f3e5f5;
+        }
+        .progress-bar-line {
+            width: 80px;
+            height: 2px;
+            background: #9c27b0;
+            margin: 0 8px;
+        }
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 36px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 16px 40px 16px;
+        }
+        .payment-section-box {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            padding: 32px 24px;
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .payment-methods {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+            justify-content: center;
+        }
+        .payment-method-button {
+            flex: 1;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            background: #f3e5f5;
+            color: #9c27b0;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .payment-method-button.active {
+            background: linear-gradient(90deg, #a12ca4 0%, #f43b7e 100%);
+            color: #fff;
+            box-shadow: 0 4px 14px 0 rgba(156, 39, 176, 0.15);
+        }
+        .payment-form-section {
+            display: none;
+        }
+        .payment-form-section.active {
+            display: block;
+        }
+        .payment-form-section h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #9c27b0;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .payment-form label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #333;
+        }
+        .payment-form input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ce93d8;
+            border-radius: 6px;
+            font-size: 15px;
+            margin-bottom: 16px;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+        .payment-form input:focus {
+            outline: none;
+            border-color: #9c27b0;
+            box-shadow: 0 0 0 2px rgba(156, 39, 176, 0.15);
+        }
+        .pay-btn {
+            width: 100%;
+            background: linear-gradient(90deg, #a12ca4 0%, #f43b7e 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            padding: 14px 0;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .pay-btn:hover {
+            background: linear-gradient(90deg, #7b1fa2 0%, #d81b60 100%);
+        }
+        .cod-info {
+            background: #f3e5f5;
+            border: 1px solid #ce93d8;
+            border-radius: 8px;
+            padding: 18px 14px;
+            text-align: center;
+            color: #7b1fa2;
+            margin-bottom: 16px;
+        }
+        .message-box {
+            position: fixed;
+            inset: 0;
+            background: rgba(60, 0, 60, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            display: none;
+        }
+        .message-box.active {
+            display: flex;
+        }
+        .message-content {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 16px rgba(156, 39, 176, 0.15);
+            padding: 32px 24px;
+            max-width: 340px;
+            text-align: center;
+        }
+        .message-content p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 18px;
+        }
+        .message-close-btn {
+            background: linear-gradient(90deg, #a12ca4 0%, #f43b7e 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 10px 24px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .message-close-btn:hover {
+            background: linear-gradient(90deg, #7b1fa2 0%, #d81b60 100%);
+        }
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 0 2px 32px 2px;
+            }
+            .payment-section-box {
+                padding: 16px 6px;
+            }
+            .logo {
+                font-size: 28px;
+            }
+            .payment-methods {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">FashionZ</div>
+        <div class="progress-bar">
+            <div class="progress-step">
+                <div class="progress-circle">1</div>
+                Review
+            </div>
+            <div class="progress-bar-line"></div>
+            <div class="progress-step active">
+                <div class="progress-circle">2</div>
+                Payment
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="payment-section-box">
+            <div class="payment-methods">
+                <button id="card-btn" class="payment-method-button active">Pay via Card</button>
+                <button id="upi-btn" class="payment-method-button">Pay via UPI</button>
+                <button id="cod-btn" class="payment-method-button">Cash on Delivery</button>
+            </div>
+            <!-- Card Payment Section -->
+            <div id="card-section" class="payment-form-section active">
+                <h2>Card Details</h2>
+                <form id="card-form" class="payment-form" autocomplete="off">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required>
+                    <div style="display:flex; gap:10px;">
+                        <div style="flex:1;">
+                            <label for="expiry-date">Expiry (MM/YY)</label>
+                            <input type="text" id="expiry-date" maxlength="5" placeholder="MM/YY" required>
+                        </div>
+                        <div style="flex:1;">
+                            <label for="cvv">CVV</label>
+                            <input type="password" id="cvv" maxlength="4" placeholder="XXX" required>
+                        </div>
+                    </div>
+                    <label for="card-holder">Card Holder Name</label>
+                    <input type="text" id="card-holder" placeholder="John Doe" required>
+                    <button type="submit" class="pay-btn">Pay Now</button>
+                </form>
+            </div>
+            <!-- UPI Payment Section -->
+            <div id="upi-section" class="payment-form-section">
+                <h2>UPI Payment</h2>
+                <form id="upi-form" class="payment-form" autocomplete="off">
+                    <label for="upi-id">Enter UPI ID</label>
+                    <input type="text" id="upi-id" placeholder="yourname@bankupi" required>
+                    <div style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;">
+                        After clicking "Pay Now", you will receive a payment request on your UPI app.
+                    </div>
+                    <button type="submit" class="pay-btn">Pay Now</button>
+                </form>
+            </div>
+            <!-- Cash on Delivery Section -->
+            <div id="cod-section" class="payment-form-section">
+                <h2>Cash on Delivery</h2>
+                <div class="cod-info">
+                    You have selected Cash on Delivery.<br>
+                    Please have the exact amount ready when your order is delivered.
+                </div>
+                <button type="button" id="cod-confirm-btn" class="pay-btn">Confirm Order</button>
+            </div>
+        </div>
+    </div>
+    <!-- Message Box -->
+    <div id="message-box" class="message-box">
+        <div class="message-content">
+            <p id="message-text"></p>
+            <button id="message-close-btn" class="message-close-btn">OK</button>
+        </div>
+    </div>
+    <script>
+        // Tab switching logic
+        const cardBtn = document.getElementById('card-btn');
+        const upiBtn = document.getElementById('upi-btn');
+        const codBtn = document.getElementById('cod-btn');
+        const cardSection = document.getElementById('card-section');
+        const upiSection = document.getElementById('upi-section');
+        const codSection = document.getElementById('cod-section');
+        const paymentBtns = [cardBtn, upiBtn, codBtn];
+        const paymentSections = [cardSection, upiSection, codSection];
+
+        function showSection(idx) {
+            paymentBtns.forEach((btn, i) => {
+                btn.classList.toggle('active', i === idx);
+                paymentSections[i].classList.toggle('active', i === idx);
+            });
+        }
+        cardBtn.onclick = () => showSection(0);
+        upiBtn.onclick = () => showSection(1);
+        codBtn.onclick = () => showSection(2);
+
+        // Message box logic
+        const messageBox = document.getElementById('message-box');
+        const messageText = document.getElementById('message-text');
+        const messageCloseBtn = document.getElementById('message-close-btn');
+        function showMessage(msg) {
+            messageText.textContent = msg;
+            messageBox.classList.add('active');
+        }
+        messageCloseBtn.onclick = () => {
+            messageBox.classList.remove('active');
+        };
+
+        // Card form validation
+        document.getElementById('card-form').onsubmit = function(e) {
+            e.preventDefault();
+            const cardNumber = document.getElementById('card-number').value.trim();
+            const expiry = document.getElementById('expiry-date').value.trim();
+            const cvv = document.getElementById('cvv').value.trim();
+            const holder = document.getElementById('card-holder').value.trim();
+            if (cardNumber.length < 16 || expiry.length < 4 || cvv.length < 3 || holder === '') {
+                showMessage('Please fill in all card details correctly.');
+                return;
+            }
+            showMessage('Card payment processed successfully!');
+            this.reset();
+        };
+
+        // UPI form validation
+        document.getElementById('upi-form').onsubmit = function(e) {
+            e.preventDefault();
+            const upiId = document.getElementById('upi-id').value.trim();
+            if (upiId === '' || !upiId.includes('@')) {
+                showMessage('Please enter a valid UPI ID.');
+                return;
+            }
+            showMessage(`Payment request sent to UPI ID: ${upiId}. Please approve in your UPI app.`);
+            this.reset();
+        };
+
+        // COD confirm
+        document.getElementById('cod-confirm-btn').onclick = function() {
+            showMessage('Your order has been confirmed for Cash on Delivery!');
+        };
+
+        // Default to card section
+        showSection(0);
+    </script>
+</body>
+</html>

@@ -602,31 +602,37 @@
     </div>
 
     <script>
-        // Size selection functionality
-        document.querySelectorAll('.size-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-            });
+document.addEventListener('DOMContentLoaded', function() {
+    // Size selection functionality
+    document.querySelectorAll('.size-option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
         });
+    });
 
-        // Thumbnail image switching
-        document.querySelectorAll('.thumbnail').forEach(thumb => {
-            thumb.addEventListener('click', function() {
-                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+    // Add to cart button
+    document.querySelector('.btn-outline').addEventListener('click', function() {
+        alert('Added to cart!');
+    });
 
-        // Add to cart button
-        document.querySelector('.btn-outline').addEventListener('click', function() {
-            alert('Added to cart!');
-        });
-
-        // Buy now button
-        document.querySelector('.btn-primary').addEventListener('click', function() {
-            alert('Proceeding to checkout...');
-        });
+    // Buy now button
+    document.querySelector('.btn-primary').addEventListener('click', function() {
+        const selectedSize = document.querySelector('.size-option.selected')?.textContent || "M";
+        const product = {
+            img: "assets/PremiumCottonshirt.jpg",
+            name: "Men'S Cotton Formal Shirt",
+            price: 599,
+            size: selectedSize,
+            qty: 1,
+            seller: "FashionZ",
+            freeDelivery: true,
+            deliveryDate: "Tuesday, 17th Jun"
+        };
+        localStorage.setItem('selectedProduct', JSON.stringify(product));
+        window.location.href = "bookingSummary.html";
+    });
+});
     </script>
 </body>
 </html>

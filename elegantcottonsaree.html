@@ -583,11 +583,24 @@
         document.querySelector('.btn-outline').addEventListener('click', function() {
             alert('Saree added to cart!');
         });
-
-        // Buy now button
-        document.querySelector('.btn-primary').addEventListener('click', function() {
-            alert('Proceeding to checkout for your saree...');
-        });
     </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.btn-primary').addEventListener('click', function() {
+        const product = {
+            img: "assets/elegeantcottonsarees.jpg",
+            name: "Women's Elegant Cotton Saree with Unstitched Blouse",
+            price: 445,
+            size: "Free Size",
+            qty: 1,
+            seller: "FashionZ",
+            freeDelivery: true,
+            deliveryDate: "Tuesday, 17th Jun"
+        };
+        localStorage.setItem('selectedProduct', JSON.stringify(product));
+        window.location.href = "bookingSummary.html";
+    });
+});
+</script>
 </body>
 </html>

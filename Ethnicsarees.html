@@ -107,8 +107,9 @@
         /* Navigation */
         .nav-bar {
             background: white;
-            padding: 12px 0;
+            padding: 18px 0 10px 0;
             border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
         }
 
         .nav-container {
@@ -120,21 +121,45 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 25px; /* match menwear.html */
             overflow-x: auto;
+            justify-content: flex-start;
+            align-items: center;
+            background: transparent;
         }
 
-        .nav-menu li {
-            cursor: pointer;
+        .nav-menu li,
+        .nav-menu li a {
+            color: #8B2F97 !important;
             font-weight: 500;
-            color: #555;
-            white-space: nowrap;
-            padding: 8px 0;
+            text-decoration: none;
+            font-size: 15px; /* match menwear.html */
             transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 4px; /* match menwear.html */
+            background: transparent;
         }
 
-        .nav-menu li:hover {
-            color: #8B2F97;
+        .nav-menu li.active,
+        .nav-menu li.active a {
+            color: #8B2F97 !important;
+        }
+
+        .nav-menu li.active a::after {
+            content: "";
+            display: block;
+            height: 4px;
+            width: 100%;
+            margin-top: 2px;
+            border-bottom: 3px double #8B2F97;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .nav-menu li:hover,
+        .nav-menu li:hover a {
+            color: #8B2F97 !important;
         }
 
         /* Main Content */
@@ -395,16 +420,16 @@
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
-                <li>Women Ethnic</li>
-                <li>Women Western</li>
-                <li>Men</li>
-                <li>Kids</li>
-                <li>Home & Kitchen</li>
-                <li>Beauty & Health</li>
-                <li>Jewellery & Accessories</li>
-                <li>Bags & Footwear</li>
-                <li>Electronics</li>
-                <li>Sports & Fitness</li>
+                <li class="active"><a href="Ethnicsarees.html">Women Ethnic</a></li>
+                <li><a href="womenwestern.html">Women Western</a></li>
+                <li><a href="menwear.html">Men</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Home & Kitchen</a></li>
+                <li><a href="#">Beauty & Health</a></li>
+                <li><a href="#">Jewellery & Accessories</a></li>
+                <li><a href="#">Bags & Footwear</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Sports & Fitness</a></li>
             </ul>
         </div>
     </nav>

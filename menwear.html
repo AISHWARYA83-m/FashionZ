@@ -107,8 +107,9 @@
         /* Navigation */
         .nav-bar {
             background: white;
-            padding: 12px 0;
+            padding: 18px 0 10px 0;
             border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
         }
 
         .nav-container {
@@ -120,26 +121,45 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 25px; /* reduced from 60px */
             overflow-x: auto;
+            justify-content: flex-start;
+            align-items: center;
+            background: transparent;
         }
 
-        .nav-menu li {
-            cursor: pointer;
+        .nav-menu li,
+        .nav-menu li a {
+            color: #8B2F97 !important;
             font-weight: 500;
-            color: #555;
-            white-space: nowrap;
-            padding: 8px 0;
+            text-decoration: none;
+            font-size: 15px; /* reduced from 26px */
             transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 4px; /* reduced from 6px */
+            background: transparent;
         }
 
-        .nav-menu li:hover {
-            color: #8B2F97; /* changed to match Ethnicsarees */
+        .nav-menu li.active,
+        .nav-menu li.active a {
+            color: #8B2F97 !important;
         }
 
-        .nav-menu li.active {
-            color: #8B2F97; /* changed to match Ethnicsarees */
-            border-bottom: 2px solid #8B2F97; /* changed to match Ethnicsarees */
+        .nav-menu li.active a::after {
+            content: "";
+            display: block;
+            height: 4px;
+            width: 100%;
+            margin-top: 2px;
+            border-bottom: 3px double #8B2F97;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .nav-menu li:hover,
+        .nav-menu li:hover a {
+            color: #8B2F97 !important;
         }
 
         /* Main Content */
@@ -400,16 +420,15 @@
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
-                <li>Women Ethnic</li>
-                <li>Women Western</li>
-                <li class="active">Men</li>
-                <li>Kids</li>
-                <li>Home & Kitchen</li>
-                <li>Beauty & Health</li>
-                <li>Jewellery & Accessories</li>
-                <li>Bags & Footwear</li>
-                <li>Electronics</li>
-                <li>Sports & Fitness</li>
+                <li><a href="Ethnicsarees.html">Women Ethnic</a></li>
+                <li><a href="womenwestern.html">Women Western</a></li>
+                <li class="active"><a href="menwear.html">Men</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Home & Kitchen</a></li>
+                <li><a href="#">Beauty & Health</a></li>
+                <li><a href="#">Jewellery & Accessories</a></li>
+                <li><a href="#">Bags & Footwear</a></li>
+                <li><a href="#">Electronics</a></li>
             </ul>
         </div>
     </nav>
@@ -460,12 +479,18 @@
                             <label for="kurtas">Kurtas & Ethnic</label>
                         </div>
                         <div class="filter-option">
-                            <input type="checkbox" id="jackets">
-                            <label for="jackets">Jackets & Blazers</label>
+                            <input type="checkbox" id="Blazer">
+                            <label for="Blazer">Blazers</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="Sports">
+                            <label for="Sports">Sports</label>
                         </div>
                     </div>
                 </div>
 
+                <!-- Remove this Size filter group -->
+                <!--
                 <div class="filter-group">
                     <div class="filter-title">
                         Size
@@ -494,7 +519,10 @@
                         </div>
                     </div>
                 </div>
+                -->
 
+                <!-- Remove this Color filter group -->
+                <!--
                 <div class="filter-group">
                     <div class="filter-title">
                         Color
@@ -523,6 +551,49 @@
                         </div>
                     </div>
                 </div>
+                -->
+
+                <div class="filter-group">
+                    <div class="filter-title">
+                        Price
+                        <span>▼</span>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="price-1000">
+                            <label for="price-1000">Below ₹1000</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price-500">
+                            <label for="price-500">Below ₹500</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price-above-1000">
+                            <label for="price-above-1000">Above ₹1000</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-title">
+                        Ratings
+                        <span>▼</span>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="rating-4">
+                            <label for="rating-4">4★ & above</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="rating-3">
+                            <label for="rating-3">3★ & above</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="rating-2">
+                            <label for="rating-2">2★ & above</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </aside>
 
@@ -530,9 +601,9 @@
         <main class="products-section">
             <div class="products-grid">
                 <!-- Product 1 -->
-                <div class="product-card">
+                <div class="product-card" onclick="window.location.href='PremiumCottonshirt.html'" style="cursor:pointer;">
                     <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
-                        <img src="assets/cotton-shirt.jpg" alt="Premium Cotton Formal Shirts" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        <img src="assets/PremiumCottonshirt.jpg" alt="Premium Cotton Formal Shirts" style="max-width:100%; max-height:100%; object-fit:cover;">
                         <div class="product-badge">+5 Colors</div>
                     </div>
                     <div class="product-info">
@@ -550,9 +621,9 @@
                 </div>
 
                 <!-- Product 2 -->
-                <div class="product-card">
+                <div class="product-card" onclick="window.location.href='ClassicPoloTshirt.html'" style="cursor:pointer;">
                     <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
-                        <img src="assets/poloTshirt.jpg" alt="Classic Polo T-Shirts" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        <img src="assets/ClassicPoloTshirt.jpg" alt="Classic Polo T-Shirts" style="max-width:100%; max-height:100%; object-fit:cover;">
                         <div class="product-badge">+8 Colors</div>
                     </div>
                     <div class="product-info">
@@ -571,7 +642,7 @@
                 <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
-                        <img src="assets/denimJeans.jpg" alt="Slim Fit Denim Jeans" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        <img src="assets/SlimFitdenimJeans.jpg" alt="Slim Fit Denim Jeans" style="max-width:100%; max-height:100%; object-fit:cover;">
                         <div class="product-badge">+4 Sizes</div>
                     </div>
                     <div class="product-info">
@@ -591,7 +662,7 @@
                 <!-- Product 4 -->
                 <div class="product-card">
                     <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
-                        <img src="assets/trousersMEN.jpg" alt="Casual Chino Trousers" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        <img src="assets/CasualChinoTrouesers.jpg" alt="Casual Chino Trousers" style="max-width:100%; max-height:100%; object-fit:cover;">
                         <div class="product-badge">+6 Colors</div>
                     </div>
                     <div class="product-info">
@@ -648,7 +719,7 @@
                 <!-- Product 7 -->
                 <div class="product-card">
                     <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
-                        <img src="assets/Blazer.jpg" alt="Formal Blazer " style="max-width:100%; max-height:100%; object-fit:cover;">
+                        <img src="assets/Formal_Blazer.jpg" alt="Formal Blazer " style="max-width:100%; max-height:100%; object-fit:cover;">
                         <div class="product-badge">+4 Sizes</div>
                     </div>
                     <div class="product-info">
@@ -668,11 +739,11 @@
                 <!-- Product 8 -->
                 <div class="product-card">
                     <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
-                        <img src="assets/RCB-JERSEY.jpg" alt="Sports & Gym Wear" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        <img src="assets/RCB JERSEY.jpg" alt="Sports & Gym Wear" style="max-width:100%; max-height:100%; object-fit:cover;">
                         <div class="product-badge">+9 Colors</div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">RCB-JERSEY</h3>
+                        <h3 class="product-title">RCB JERSEY</h3>
                         <div class="product-price">₹399</div>
                         <div class="product-delivery">Free Delivery</div>
                         <div class="product-rating">
@@ -722,40 +793,182 @@
             // Sort functionality
             const sortSelect = document.querySelector('.sort-select');
             sortSelect.addEventListener('change', function() {
-                // Add sorting logic here
-                console.log('Sorting by:', this.value);
+                const grid = document.querySelector('.products-grid');
+                const cards = Array.from(grid.querySelectorAll('.product-card'));
+
+                let sortedCards = cards;
+
+                if (this.value === 'Price: Low to High') {
+                    sortedCards = cards.sort((a, b) => {
+                        const priceA = parseInt(a.querySelector('.product-price').textContent.replace(/[^\d]/g, ''));
+                        const priceB = parseInt(b.querySelector('.product-price').textContent.replace(/[^\d]/g, ''));
+                        return priceA - priceB;
+                    });
+                } else if (this.value === 'Price: High to Low') {
+                    sortedCards = cards.sort((a, b) => {
+                        const priceA = parseInt(a.querySelector('.product-price').textContent.replace(/[^\d]/g, ''));
+                        const priceB = parseInt(b.querySelector('.product-price').textContent.replace(/[^\d]/g, ''));
+                        return priceB - priceA;
+                    });
+                } else if (this.value === 'Customer Rating') {
+                    sortedCards = cards.sort((a, b) => {
+                        const ratingA = parseFloat(a.querySelector('.rating-badge').textContent);
+                        const ratingB = parseFloat(b.querySelector('.rating-badge').textContent);
+                        return ratingB - ratingA;
+                    });
+                } else {
+                    // Relevance or Newest First (default order)
+                    sortedCards = cards;
+                }
+
+                // Remove all cards and re-append in sorted order
+                grid.innerHTML = '';
+                sortedCards.forEach(card => grid.appendChild(card));
+
+                // Re-apply filters after sorting
+                applyFilters();
             });
 
             // Filter checkbox functionality
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(checkbox => {
                 checkbox.addEventListener('change', function() {
-                    // Add filter logic here
-                    console.log('Filter changed:', this.id, this.checked);
+                    applyFilters();
                     updateProductCount();
                 });
             });
 
-            // Update product count based on filters
-            function updateProductCount() {
-                const checkedFilters = document.querySelectorAll('input[type="checkbox"]:checked');
-                const productCountElement = document.querySelector('.product-count');
-                
-                if (checkedFilters.length > 0) {
-                    // Simulate filtered count
-                    const filteredCount = Math.max(50, 850 - (checkedFilters.length * 100));
-                    productCountElement.textContent = `${filteredCount}+ Products`;
-                } else {
-                    productCountElement.textContent = '850+ Products';
+            function applyFilters() {
+                const checkedCategories = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.id);
+
+                const filterMap = {
+                    shirts: 'Premium Cotton Formal Shirts',
+                    't-shirts': 'Classic Polo T-Shirts',
+                    jeans: 'Slim Fit Denim Jeans',
+                    trousers: 'Casual Chino Trousers',
+                    kurtas: 'Kurta Sets',
+                    Blazer: 'Formal Blazer',
+                    Sports: 'RCB JERSEY',
+                    black: null,
+                    white: null,
+                    blue: null,
+                    grey: null,
+                    navy: null
+                };
+
+                const allCards = document.querySelectorAll('.product-card');
+                allCards.forEach(card => card.style.display = 'none');
+
+                if (checkedCategories.length === 0) {
+                    allCards.forEach(card => card.style.display = '');
+                    return;
                 }
+
+                // Price filter
+                let priceLimit = null;
+                let priceAbove = false;
+                if (checkedCategories.includes('price-500')) {
+                    priceLimit = 500;
+                } else if (checkedCategories.includes('price-1000')) {
+                    priceLimit = 1000;
+                }
+                if (checkedCategories.includes('price-above-1000')) {
+                    priceAbove = true;
+                }
+
+                // Rating filter
+                const ratingFilters = checkedCategories.filter(id => id.startsWith('rating-'));
+                let minRating = 0;
+                if (ratingFilters.length > 0) {
+                    minRating = Math.max(...ratingFilters.map(r => parseInt(r.split('-')[1])));
+                }
+
+                allCards.forEach(card => {
+                    const title = card.querySelector('.product-title');
+                    const ratingBadge = card.querySelector('.rating-badge');
+                    const priceElem = card.querySelector('.product-price');
+                    let show = false;
+
+                    // Category filter
+                    checkedCategories.forEach(filterId => {
+                        const productName = filterMap[filterId];
+                        if (productName && title && title.textContent.trim() === productName) {
+                            show = true;
+                        }
+                    });
+
+                    // If only price or rating filter is checked
+                    if (
+                        checkedCategories.some(id => id.startsWith('price-')) &&
+                        checkedCategories.every(id => id.startsWith('price-') || id.startsWith('rating-'))
+                    ) {
+                        show = true;
+                    }
+
+                    // Price filter logic
+                    if (priceElem) {
+                        const priceValue = parseInt(priceElem.textContent.replace(/[^\d]/g, ''));
+                        if (priceLimit && (!isNaN(priceValue) && priceValue > priceLimit)) {
+                            show = false;
+                        }
+                        if (priceAbove && (!isNaN(priceValue) && priceValue <= 1000)) {
+                            show = false;
+                        }
+                        // If both below and above are checked, show all
+                        if (checkedCategories.includes('price-1000') && checkedCategories.includes('price-above-1000')) {
+                            show = true;
+                        }
+                    }
+
+                    // Rating filter logic
+                    if (minRating > 0 && ratingBadge) {
+                        const ratingValue = parseFloat(ratingBadge.textContent);
+                        if (isNaN(ratingValue) || ratingValue < minRating) {
+                            show = false;
+                        }
+                    }
+
+                    // If only rating filter is checked
+                    if (ratingFilters.length > 0 && checkedCategories.every(id => id.startsWith('rating-'))) {
+                        if (ratingBadge) {
+                            const ratingValue = parseFloat(ratingBadge.textContent);
+                            show = ratingValue >= minRating;
+                        } else {
+                            show = false;
+                        }
+                    }
+
+                    if (show) {
+                        card.style.display = '';
+                    }
+                });
             }
 
-            // Search functionality
-            const searchBar = document.querySelector('.search-bar');
-            searchBar.addEventListener('input', function() {
-                // Add search logic here
-                console.log('Searching for:', this.value);
-            });
+            function updateProductCount() {
+                const checkedCategories = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.id);
+                const productCount = document.querySelector('.product-count');
+
+                // If no filter is checked, show total count (assuming 850+ as default)
+                if (checkedCategories.length === 0) {
+                    productCount.textContent = '850+ Products';
+                    return;
+                }
+
+                // Calculate the number of products matching the checked filters
+                let count = 0;
+                checkedCategories.forEach(filterId => {
+                    const productName = filterMap[filterId];
+                    if (productName) {
+                        const matchingProducts = Array.from(document.querySelectorAll('.product-card')).filter(card => {
+                            const title = card.querySelector('.product-title');
+                            return title && title.textContent.trim() === productName;
+                        });
+                        count += matchingProducts.length;
+                    }
+                });
+
+                productCount.textContent = `${count} Products`;
+            }
         });
     </script>
 </body>

@@ -124,22 +124,36 @@
             overflow-x: auto;
         }
 
-        .nav-menu li {
-            cursor: pointer;
+        .nav-menu li,
+        .nav-menu li a {
+            color: #8B2F97 !important;
             font-weight: 500;
-            color: #555;
-            white-space: nowrap;
-            padding: 8px 0;
+            text-decoration: none;
             transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 6px;
         }
 
-        .nav-menu li:hover {
-            color: #8B2F97;
+        .nav-menu li.active,
+        .nav-menu li.active a {
+            color: #8B2F97 !important;
         }
 
-        .nav-menu li.active {
-            color: #8B2F97;
-            border-bottom: 2px solid #8B2F97;
+        .nav-menu li.active a::after {
+            content: "";
+            display: block;
+            height: 4px;
+            width: 100%;
+            margin-top: 2px;
+            border-bottom: 3px double #8B2F97;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .nav-menu li:hover,
+        .nav-menu li:hover a {
+            color: #8B2F97 !important;
         }
 
         /* Breadcrumb */
@@ -454,15 +468,15 @@
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
-                <li class="active">Women Western</li>
-                <li>Women Ethnic</li>
-                <li>Men</li>
-                <li>Kids</li>
-                <li>Home & Kitchen</li>
-                <li>Beauty & Health</li>
-                <li>Jewellery & Accessories</li>
-                <li>Bags & Footwear</li>
-                <li>Electronics</li>
+                <li><a href="Ethnicsarees.html">Women Ethnic</a></li>
+                <li class="active"><a href="womenwestern.html">Women Western</a></li>
+                <li><a href="menwear.html">Men</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Home & Kitchen</a></li>
+                <li><a href="#">Beauty & Health</a></li>
+                <li><a href="#">Jewellery & Accessories</a></li>
+                <li><a href="#">Bags & Footwear</a></li>
+                <li><a href="#">Electronics</a></li>
             </ul>
         </div>
     </nav>

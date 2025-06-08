@@ -107,9 +107,8 @@
         /* Navigation */
         .nav-bar {
             background: white;
-            padding: 18px 0 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #e0e0e0;
-            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
         }
 
         .nav-container {
@@ -121,45 +120,21 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 25px; /* match menwear.html */
+            gap: 30px;
             overflow-x: auto;
-            justify-content: flex-start;
-            align-items: center;
-            background: transparent;
         }
 
-        .nav-menu li,
-        .nav-menu li a {
-            color: #8B2F97 !important;
+        .nav-menu li {
+            cursor: pointer;
             font-weight: 500;
-            text-decoration: none;
-            font-size: 15px; /* match menwear.html */
+            color: #555;
+            white-space: nowrap;
+            padding: 8px 0;
             transition: color 0.3s ease;
-            position: relative;
-            padding-bottom: 4px; /* match menwear.html */
-            background: transparent;
         }
 
-        .nav-menu li.active,
-        .nav-menu li.active a {
-            color: #8B2F97 !important;
-        }
-
-        .nav-menu li.active a::after {
-            content: "";
-            display: block;
-            height: 4px;
-            width: 100%;
-            margin-top: 2px;
-            border-bottom: 3px double #8B2F97;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-        }
-
-        .nav-menu li:hover,
-        .nav-menu li:hover a {
-            color: #8B2F97 !important;
+        .nav-menu li:hover {
+            color: #8B2F97;
         }
 
         /* Main Content */
@@ -420,16 +395,15 @@
     <nav class="nav-bar">
         <div class="nav-container">
             <ul class="nav-menu">
-                <li class="active"><a href="Ethnicsarees.html">Women Ethnic</a></li>
-                <li><a href="womenwestern.html">Women Western</a></li>
-                <li><a href="menwear.html">Men</a></li>
-                <li><a href="#">Kids</a></li>
-                <li><a href="#">Home & Kitchen</a></li>
-                <li><a href="#">Beauty & Health</a></li>
-                <li><a href="#">Jewellery & Accessories</a></li>
-                <li><a href="#">Bags & Footwear</a></li>
-                <li><a href="#">Electronics</a></li>
-                <li><a href="#">Sports & Fitness</a></li>
+                <li><a href="womenethnic.html" style="text-decoration:none; color:inherit;">Women Ethnic</a></li>
+                <li><a href="womenwestern.html" style="text-decoration:none; color:inherit;">Women Western</a></li>
+                <li><a href="men.html" style="text-decoration:none; color:inherit;">Men</a></li>
+                <li>Kids</li>
+                <li>Home & Kitchen</li>
+                <li>Beauty & Health</li>
+                <li>Jewellery & Accessories</li>
+                <li>Bags & Footwear</li>
+                <li>Electronics</li>
             </ul>
         </div>
     </nav>
@@ -460,28 +434,12 @@
                     </div>
                     <div class="filter-options">
                         <div class="filter-option">
-                            <input type="checkbox" id="abaya">
-                            <label for="abaya">Abaya</label>
+                            <input type="checkbox" id="sarees">
+                            <label for="sarees">Sarees</label>
                         </div>
                         <div class="filter-option">
-                            <input type="checkbox" id="blouses">
-                            <label for="blouses">Blouses</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="capes">
-                            <label for="capes">Capes, Shrugs & Ponchos</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="churidars">
-                            <label for="churidars">Churidars</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="dupatta-sets">
-                            <label for="dupatta-sets">Dupatta Sets</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="dupattas">
-                            <label for="dupattas">Dupattas</label>
+                            <input type="checkbox" id="kurtis">
+                            <label for="kurtis">Kurtis</label>
                         </div>
                     </div>
                 </div>
@@ -492,150 +450,121 @@
         <main class="products-section">
             <div class="products-grid">
                 <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
-                        <img src="assets\ensemblesaree.jpg" alt="Aishani Ensemble Sarees" style="max-width:100%; max-height:100%; object-fit:cover;">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Aishani Ensemble Sarees</h3>
-                        <div class="product-price">₹354</div>
-                        <div class="product-delivery">Free Delivery</div>
-                        <div class="product-rating">
-                            <div class="rating-badge">
-                                4.0 ⭐
+                <a href="AishaniEnsembleSarees.html" style="text-decoration: none; color: inherit;">
+                    <div class="product-card">
+                        <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                            <img src="assets\ensemblesaree.jpg" alt="Aishani Ensemble Sarees" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Aishani Ensemble Sarees</h3>
+                            <div class="product-price">₹354</div>
+                            <div class="product-delivery">Free Delivery</div>
+                            <div class="product-rating">
+                                <div class="rating-badge">
+                                    4.0 ⭐
+                                </div>
+                                <span class="rating-count">16232 Reviews</span>
                             </div>
-                            <span class="rating-count">16232 Reviews</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
-                        <img src="assets\vogouishsaree.jpg" alt="Banita Voguish Sarees" style="max-width:100%; max-height:100%; object-fit:cover;">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Banita Voguish Sarees</h3>
-                        <div class="product-price">₹527</div>
-                        <div class="product-delivery">Free Delivery</div>
-                        <div class="product-rating">
-                            <div class="rating-badge">
-                                4.1 ⭐
+                <a href="BanitaVoguishSarees.html" style="text-decoration: none; color: inherit;">
+                    <div class="product-card">
+                        <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                            <img src="assets\vogouishsaree.jpg" alt="Banita Voguish Sarees" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Banita Voguish Sarees</h3>
+                            <div class="product-price">₹527</div>
+                            <div class="product-delivery">Free Delivery</div>
+                            <div class="product-rating">
+                                <div class="rating-badge">
+                                    4.1 ⭐
+                                </div>
+                                <span class="rating-count">33093 Reviews</span>
                             </div>
-                            <span class="rating-count">33093 Reviews</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
-                        <img src="assets/charviensemblewomen.jpg" alt="Charvi Ensemble Women Saree" style="max-width:100%; max-height:100%; object-fit:cover;">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Charvi Ensemble Women...</h3>
-                        <div class="product-price">₹387</div>
-                        <div class="product-delivery">Free Delivery</div>
-                        <div class="product-rating">
-                            <div class="rating-badge">
-                                4.1 ⭐
+                </a>
+                 <!-- Product 3 -->
+                 <a href="CharviEnsembleWomen.html" style="text-decoration: none; color: inherit;">
+                    <div class="product-card">
+                        <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                            <img src="assets\charviensemblewomen.jpg" alt="Charvi Ensemble Women" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Charvi Ensemble Women</h3>
+                            <div class="product-price">₹387</div>
+                            <div class="product-delivery">Free Delivery</div>
+                            <div class="product-rating">
+                                <div class="rating-badge">
+                                    4.2 ⭐
+                                </div>
+                                <span class="rating-count">2847 Reviews</span>
                             </div>
-                            <span class="rating-count">49927 Reviews</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
-                        <img src="assets\aishaniGracefullSarees.jpg" alt="Aishani Graceful Sarees" style="max-width:100%; max-height:100%; object-fit:cover;">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Aishani Graceful Sarees</h3>
-                        <div class="product-price">₹399</div>
-                        <div class="product-delivery">Free Delivery</div>
-                        <div class="product-rating">
-                            <div class="rating-badge">
-                                4.0 ⭐
+                </a>
+                 <!-- Product 4 -->
+                 <a href="elegantcottonsaree.html" style="text-decoration: none; color: inherit;">
+                    <div class="product-card">
+                        <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                            <img src="assets\elegantcottonsaree.jpg" alt="Elegant Cotton Saree" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Elegant Cotton Saree</h3>
+                            <div class="product-price">₹445</div>
+                            <div class="product-delivery">Free Delivery</div>
+                            <div class="product-rating">
+                                <div class="rating-badge">
+                                    4.3 ⭐
+                                </div>
+                                <span class="rating-count">1256 Reviews</span>
                             </div>
-                            <span class="rating-count">4331 Reviews</span>
-                            <div class="trusted-badge">🛡 Trusted</div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-image" style="background-image: linear-gradient(45deg, #FF4081, #E91E63);">
-                        <div class="product-badge">+6 More</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Elegant Cotton Sarees</h3>
-                        <div class="product-price">₹445</div>
-                        <div class="product-delivery">Free Delivery</div>
-                        <div class="product-rating">
-                            <div class="rating-badge">
-                                4.2 ⭐
+                </a>
+                 <!-- Product 5 -->
+                 <a href="AishaniGracefulSarees.html" style="text-decoration: none; color: inherit;">
+                    <div class="product-card">
+                        <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                            <img src="assets\aishaniGracefullSarees.jpg" alt="Aishani Graceful Sarees" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Aishani Graceful Sarees</h3>
+                            <div class="product-price">₹399</div>
+                            <div class="product-delivery">Free Delivery</div>
+                            <div class="product-rating">
+                                <div class="rating-badge">
+                                    4.4 ⭐
+                                </div>
+                                <span class="rating-count">987 Reviews</span>
                             </div>
-                            <span class="rating-count">12456 Reviews</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-image" style="background-image: linear-gradient(45deg, #00BCD4, #0097A7);">
-                        <div class="product-badge">+4 More</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Priya Designer Kurtis</h3>
-                        <div class="product-price">₹299</div>
-                        <div class="product-delivery">Free Delivery</div>
-                        <div class="product-rating">
-                            <div class="rating-badge">
-                                4.3 ⭐
+                <a href="PriyaDesignerKurtis.html" style="text-decoration: none; color: inherit;">
+                    <div class="product-card">
+                        <div class="product-image" style="background: none; display: flex; align-items: center; justify-content: center; height: 300px;">
+                            <img src="assets\priyadesignerkurtis.jpg" alt="priya designer kurtis" style="max-width:100%; max-height:100%; object-fit:cover;">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">priya designer kurtis</h3>
+                            <div class="product-price">₹299</div>
+                            <div class="product-delivery">Free Delivery</div>
+                            <div class="product-rating">
+                                <div class="rating-badge">
+                                    4.5 ⭐
+                                </div>
+                                <span class="rating-count">654 Reviews</span>
                             </div>
-                            <span class="rating-count">8765 Reviews</span>
-                            <div class="trusted-badge">🛡 Trusted</div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card">
-                    <div class="product-image" style="background-image: linear-gradient(45deg, #FFC107, #FF9800);">
-                        <div class="product-badge">+10 More</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Traditional Lehenga Set</h3>
-                        <div class="product-price">₹1,299</div>
-                        <div class="product-delivery">Free Delivery</div>
-                        <div class="product-rating">
-                            <div class="rating-badge">
-                                4.4 ⭐
-                            </div>
-                            <span class="rating-count">2341 Reviews</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product-card">
-                    <div class="product-image" style="background-image: linear-gradient(45deg, #795548, #8BC34A);">
-                        <div class="product-badge">+7 More</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Casual Tops Collection</h3>
-                        <div class="product-price">₹199</div>
-                        <div class="product-delivery">Free Delivery</div>
-                        <div class="product-rating">
-                            <div class="rating-badge">
-                                3.9 ⭐
-                            </div>
-                            <span class="rating-count">5673 Reviews</span>
-                        </div>
-                    </div>
-                </div>
+                </a>
             </div>
         </main>
     </div>
@@ -675,18 +604,79 @@
             // Sort functionality
             const sortSelect = document.querySelector('.sort-select');
             sortSelect.addEventListener('change', function() {
-                // Add sorting logic here
-                console.log('Sorting by:', this.value);
+                const sortBy = this.value;
+                sortProducts(sortBy);
             });
+
+            function sortProducts(sortBy) {
+                const productGrid = document.querySelector('.products-grid');
+                const productCards = Array.from(productGrid.querySelectorAll('.product-card'));
+
+                productCards.sort((a, b) => {
+                    let aValue, bValue;
+
+                    switch (sortBy) {
+                        case 'Price: Low to High':
+                            aValue = parseFloat(a.querySelector('.product-price').textContent.replace('₹', ''));
+                            bValue = parseFloat(b.querySelector('.product-price').textContent.replace('₹', ''));
+                            return aValue - bValue;
+                        case 'Price: High to Low':
+                            aValue = parseFloat(a.querySelector('.product-price').textContent.replace('₹', ''));
+                            bValue = parseFloat(b.querySelector('.product-price').textContent.replace('₹', ''));
+                            return bValue - aValue;
+                        case 'Customer Rating':
+                            aValue = parseFloat(a.querySelector('.rating-badge').textContent);
+                            bValue = parseFloat(b.querySelector('.rating-badge').textContent);
+                            return bValue - aValue;
+                        case 'Newest First':
+                            // Assuming you have a way to determine "newness" (e.g., a data attribute)
+                            // This is a placeholder - replace with your actual logic
+                            aValue = new Date(a.dataset.dateAdded || 0);
+                            bValue = new Date(b.dataset.dateAdded || 0);
+                            return bValue - aValue;
+                        default: // Relevance
+                            return 0; // No sorting
+                    }
+                });
+
+                // Remove existing cards
+                while (productGrid.firstChild) {
+                    productGrid.removeChild(productGrid.firstChild);
+                }
+
+                // Append sorted cards
+                productCards.forEach(card => productGrid.appendChild(card));
+            }
 
             // Filter checkbox functionality
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(checkbox => {
                 checkbox.addEventListener('change', function() {
-                    // Add filter logic here
-                    console.log('Filter changed:', this.id, this.checked);
+                    applyFilters();
                 });
             });
+
+            function applyFilters() {
+                const selectedCategories = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+                    .map(checkbox => checkbox.id);
+
+                const productCards = document.querySelectorAll('.product-card');
+
+                productCards.forEach(card => {
+                    let productCategory = '';
+                    if (card.querySelector('.product-title').textContent.toLowerCase().includes('saree')) {
+                        productCategory = 'sarees';
+                    } else if (card.querySelector('.product-title').textContent.toLowerCase().includes('kurti')) {
+                        productCategory = 'kurtis';
+                    }
+
+                    if (selectedCategories.length === 0 || selectedCategories.includes(productCategory)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
         });
     </script>
 </body>
